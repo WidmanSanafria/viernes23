@@ -157,13 +157,14 @@ async def execute_order(symbol, side, entry_price, stop_loss, take_profit):
                                 f"🟠 Stop-Loss: {stop_loss:.10f}, 🟠 Take-Profit: {take_profit:.10f}")
 
     pnl = 0  # Inicialización para evitar el error
+    trailing_stop = take_profit  # Inicializar el trailing stop
     for _ in tqdm(range(84), desc="Monitoreo", ncols=80):  # 84 iteraciones de 5 segundos = 7 minutos
         current_price = float(client.get_symbol_ticker(symbol=symbol)['price'])
-        logger.info(f"Precio actual: {current_price:.10f}, Take-Profit: {take_profit:.10f}, Stop-Loss: {stop_loss:.10f}")
+        logger.info(f"Precio actual: {current_price:.10f}, Trailing Stop: {trailing_stop:.10f}")
 
         if side == "BUY":
-            if current_price >= take_profit:
-                pnl = (take_profit - entry_price) * (TRADE_AMOUNT_USDT / entry_price)
+            if current_price >= trailing_stop:
+                pnl = (trailing_stop - entry_price) * (TRADE_AMOUNT_USDT / entry_price)
                 logger.info(f"Vendiendo {symbol} al precio {current_price:.10f} para obtener ganancias.")
                 await send_telegram_message(f"🟢 Vendiendo {symbol} al precio {current_price:.10f} para obtener ganancias.")
                 break
@@ -172,9 +173,12 @@ async def execute_order(symbol, side, entry_price, stop_loss, take_profit):
                 logger.info(f"Vendiendo {symbol} al precio {current_price:.10f} debido a Stop-Loss.")
                 await send_telegram_message(f"🔴 Vendiendo {symbol} al precio {current_price:.10f} debido a Stop-Loss.")
                 break
+            # Ajustar el trailing stop si el precio sube
+            if current_price > trailing_stop:
+                trailing_stop = current_price - ATR_MULTIPLIER * df['atr'].iloc[-1]
         elif side == "SELL":
-            if current_price <= take_profit:
-                pnl = (entry_price - take_profit) * (TRADE_AMOUNT_USDT / entry_price)
+            if current_price <= trailing_stop:
+                pnl = (entry_price - trailing_stop) * (TRADE_AMOUNT_USDT / entry_price)
                 logger.info(f"Comprando {symbol} al precio {current_price:.10f} para obtener ganancias.")
                 await send_telegram_message(f"🟢 Comprando {symbol} al precio {current_price:.10f} para obtener ganancias.")
                 break
@@ -183,6 +187,9 @@ async def execute_order(symbol, side, entry_price, stop_loss, take_profit):
                 logger.info(f"Comprando {symbol} al precio {current_price:.10f} debido a Stop-Loss.")
                 await send_telegram_message(f"🔴 Comprando {symbol} al precio {current_price:.10f} debido a Stop-Loss.")
                 break
+            # Ajustar el trailing stop si el precio baja
+            if current_price < trailing_stop:
+                trailing_stop = current_price + ATR_MULTIPLIER * df['atr'].iloc[-1]
         await asyncio.sleep(5)
 
     # Si no se alcanza ni el Stop-Loss ni el Take-Profit, cerrar al precio más cercano al Take-Profit
