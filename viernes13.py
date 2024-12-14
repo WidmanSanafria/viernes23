@@ -220,11 +220,20 @@ async def main():
     global current_pair_index, consecutive_losses
     try:
         while True:
+            # Verificar si se han recorrido todos los pares
+            if current_pair_index >= len(pairs):
+                logger.info("Se han recorrido todos los pares. Monitoreando el mercado en busca de señales claras...")
+                await send_telegram_message("🔍 Se han recorrido todos los pares. Monitoreando el mercado en busca de señales claras...")
+                current_pair_index = 0  # Reiniciar el índice de pares
+                await asyncio.sleep(SLEEP_INTERVAL * 6)  # Esperar un tiempo antes de volver a verificar
+                continue
+
             symbol = pairs[current_pair_index]
             logger.info(f"Obteniendo datos históricos para {symbol}...")
             df = await get_historical_data(symbol)
             if df is None or len(df) < WINDOW_SIZE:
                 logger.warning(f"No se pudieron obtener datos para {symbol}. Saltando...")
+                current_pair_index += 1  # Pasar al siguiente par
                 await asyncio.sleep(SLEEP_INTERVAL)
                 continue
 
@@ -244,6 +253,7 @@ async def main():
             if prediction < PREDICTION_THRESHOLD:
                 logger.info(f"Predicción demasiado baja ({prediction:.10f}). Abortando operación.")
                 await send_telegram_message(f"🔴 Predicción demasiado baja ({prediction:.10f}). Abortando operación.")
+                current_pair_index += 1  # Pasar al siguiente par
                 await asyncio.sleep(SLEEP_INTERVAL)
                 continue
 
@@ -257,6 +267,7 @@ async def main():
             if side == "SELL" and not await check_balance(symbol):
                 logger.info(f"No hay saldo disponible para {symbol}. Esperando orden de compra...")
                 await send_telegram_message(f"🔴 No hay saldo disponible para {symbol}. Esperando orden de compra...")
+                current_pair_index += 1  # Pasar al siguiente par
                 await asyncio.sleep(SLEEP_INTERVAL)
                 continue
 
@@ -266,6 +277,8 @@ async def main():
             if consecutive_losses >= MAX_CONSECUTIVE_LOSSES:
                 current_pair_index = (current_pair_index + 1) % len(pairs)
                 logger.info(f"Cambiando de par a {pairs[current_pair_index]} después de {MAX_CONSECUTIVE_LOSSES} pérdidas consecutivas.")
+            else:
+                current_pair_index += 1  # Pasar al siguiente par
             await asyncio.sleep(SLEEP_INTERVAL)
     except asyncio.CancelledError:
         logger.info("Tarea asíncrona cancelada. Cerrando...")

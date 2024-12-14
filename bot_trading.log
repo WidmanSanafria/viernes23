@@ -1905,3 +1905,278 @@
 2024-12-14 02:43:05,582 - INFO - Precio actual: 0.0000241600, Trailing Stop: 0.0000241717
 2024-12-14 02:43:10,788 - INFO - Precio actual: 0.0000241600, Trailing Stop: 0.0000241717
 2024-12-14 02:43:15,157 - INFO - Tarea asíncrona cancelada. Cerrando...
+2024-12-14 02:44:02,506 - INFO - Inicializando cliente en Testnet...
+2024-12-14 02:44:03,233 - INFO - Obteniendo datos históricos para DOGEUSDT...
+2024-12-14 02:44:04,526 - INFO - Preparando datos para DOGEUSDT...
+2024-12-14 02:44:04,546 - INFO - Dimensiones de X: (1876, 90, 9)
+2024-12-14 02:44:53,864 - INFO - Predicción del modelo: 0.6240761876, Precio actual: 0.4091200000
+2024-12-14 02:44:53,865 - INFO - Ejecutando orden BUY en DOGEUSDT...
+2024-12-14 02:44:53,865 - INFO - BUY 100 USDT de DOGEUSDT a 0.4091200000
+2024-12-14 02:44:57,550 - INFO - Precio actual: 0.4091100000, Trailing Stop: 0.4094151271
+2024-12-14 02:45:03,102 - INFO - Precio actual: 0.4091100000, Trailing Stop: 0.4094151271
+2024-12-14 02:45:08,672 - INFO - Precio actual: 0.4092100000, Trailing Stop: 0.4094151271
+2024-12-14 02:45:14,231 - INFO - Precio actual: 0.4092200000, Trailing Stop: 0.4094151271
+2024-12-14 02:45:19,459 - INFO - Precio actual: 0.4092200000, Trailing Stop: 0.4094151271
+2024-12-14 02:45:24,693 - INFO - Precio actual: 0.4092200000, Trailing Stop: 0.4094151271
+2024-12-14 02:45:30,235 - INFO - Precio actual: 0.4092200000, Trailing Stop: 0.4094151271
+2024-12-14 02:45:35,777 - INFO - Precio actual: 0.4090400000, Trailing Stop: 0.4094151271
+2024-12-14 02:45:41,348 - INFO - Precio actual: 0.4092400000, Trailing Stop: 0.4094151271
+2024-12-14 02:45:46,665 - INFO - Precio actual: 0.4092700000, Trailing Stop: 0.4094151271
+2024-12-14 02:45:51,901 - INFO - Precio actual: 0.4093300000, Trailing Stop: 0.4094151271
+2024-12-14 02:45:57,467 - INFO - Precio actual: 0.4093300000, Trailing Stop: 0.4094151271
+2024-12-14 02:46:02,695 - INFO - Precio actual: 0.4093300000, Trailing Stop: 0.4094151271
+2024-12-14 02:46:08,239 - INFO - Precio actual: 0.4093700000, Trailing Stop: 0.4094151271
+2024-12-14 02:46:13,475 - INFO - Precio actual: 0.4093700000, Trailing Stop: 0.4094151271
+2024-12-14 02:46:18,710 - INFO - Precio actual: 0.4093700000, Trailing Stop: 0.4094151271
+2024-12-14 02:46:23,949 - INFO - Precio actual: 0.4093700000, Trailing Stop: 0.4094151271
+2024-12-14 02:46:29,182 - INFO - Precio actual: 0.4093700000, Trailing Stop: 0.4094151271
+2024-12-14 02:46:34,735 - INFO - Precio actual: 0.4093900000, Trailing Stop: 0.4094151271
+2024-12-14 02:46:39,972 - INFO - Precio actual: 0.4093900000, Trailing Stop: 0.4094151271
+2024-12-14 02:46:45,543 - INFO - Precio actual: 0.4093900000, Trailing Stop: 0.4094151271
+2024-12-14 02:46:51,112 - INFO - Precio actual: 0.4093900000, Trailing Stop: 0.4094151271
+2024-12-14 02:46:56,331 - INFO - Precio actual: 0.4093900000, Trailing Stop: 0.4094151271
+2024-12-14 02:47:01,572 - INFO - Precio actual: 0.4093900000, Trailing Stop: 0.4094151271
+2024-12-14 02:47:06,814 - INFO - Precio actual: 0.4093900000, Trailing Stop: 0.4094151271
+2024-12-14 02:47:12,036 - INFO - Precio actual: 0.4091800000, Trailing Stop: 0.4094151271
+2024-12-14 02:47:17,718 - INFO - Precio actual: 0.4091800000, Trailing Stop: 0.4094151271
+2024-12-14 02:47:22,967 - INFO - Precio actual: 0.4091800000, Trailing Stop: 0.4094151271
+2024-12-14 02:47:28,192 - INFO - Precio actual: 0.4091800000, Trailing Stop: 0.4094151271
+2024-12-14 02:47:33,424 - INFO - Precio actual: 0.4092300000, Trailing Stop: 0.4094151271
+2024-12-14 02:47:38,651 - INFO - Precio actual: 0.4092300000, Trailing Stop: 0.4094151271
+2024-12-14 02:47:43,892 - INFO - Precio actual: 0.4092300000, Trailing Stop: 0.4094151271
+2024-12-14 02:47:49,121 - INFO - Precio actual: 0.4092300000, Trailing Stop: 0.4094151271
+2024-12-14 02:47:54,355 - INFO - Precio actual: 0.4092200000, Trailing Stop: 0.4094151271
+2024-12-14 02:47:59,587 - INFO - Precio actual: 0.4092200000, Trailing Stop: 0.4094151271
+2024-12-14 02:48:04,821 - INFO - Precio actual: 0.4092200000, Trailing Stop: 0.4094151271
+2024-12-14 02:48:10,054 - INFO - Precio actual: 0.4092300000, Trailing Stop: 0.4094151271
+2024-12-14 02:48:15,260 - INFO - Precio actual: 0.4092300000, Trailing Stop: 0.4094151271
+2024-12-14 02:48:20,504 - INFO - Precio actual: 0.4092300000, Trailing Stop: 0.4094151271
+2024-12-14 02:48:26,065 - INFO - Precio actual: 0.4092300000, Trailing Stop: 0.4094151271
+2024-12-14 02:48:31,299 - INFO - Precio actual: 0.4092300000, Trailing Stop: 0.4094151271
+2024-12-14 02:48:36,526 - INFO - Precio actual: 0.4091000000, Trailing Stop: 0.4094151271
+2024-12-14 02:48:41,754 - INFO - Precio actual: 0.4091000000, Trailing Stop: 0.4094151271
+2024-12-14 02:48:46,983 - INFO - Precio actual: 0.4091000000, Trailing Stop: 0.4094151271
+2024-12-14 02:48:52,206 - INFO - Precio actual: 0.4091300000, Trailing Stop: 0.4094151271
+2024-12-14 02:48:57,757 - INFO - Precio actual: 0.4091200000, Trailing Stop: 0.4094151271
+2024-12-14 02:49:02,977 - INFO - Precio actual: 0.4091300000, Trailing Stop: 0.4094151271
+2024-12-14 02:49:08,199 - INFO - Precio actual: 0.4091500000, Trailing Stop: 0.4094151271
+2024-12-14 02:49:13,433 - INFO - Precio actual: 0.4091500000, Trailing Stop: 0.4094151271
+2024-12-14 02:49:18,666 - INFO - Precio actual: 0.4091600000, Trailing Stop: 0.4094151271
+2024-12-14 02:49:24,226 - INFO - Precio actual: 0.4091600000, Trailing Stop: 0.4094151271
+2024-12-14 02:49:29,796 - INFO - Precio actual: 0.4091600000, Trailing Stop: 0.4094151271
+2024-12-14 02:49:35,016 - INFO - Precio actual: 0.4090900000, Trailing Stop: 0.4094151271
+2024-12-14 02:49:40,239 - INFO - Precio actual: 0.4090900000, Trailing Stop: 0.4094151271
+2024-12-14 02:49:45,467 - INFO - Precio actual: 0.4090900000, Trailing Stop: 0.4094151271
+2024-12-14 02:49:50,693 - INFO - Precio actual: 0.4090900000, Trailing Stop: 0.4094151271
+2024-12-14 02:49:55,912 - INFO - Precio actual: 0.4092000000, Trailing Stop: 0.4094151271
+2024-12-14 02:50:01,475 - INFO - Precio actual: 0.4092000000, Trailing Stop: 0.4094151271
+2024-12-14 02:50:06,698 - INFO - Precio actual: 0.4092400000, Trailing Stop: 0.4094151271
+2024-12-14 02:50:12,011 - INFO - Precio actual: 0.4092300000, Trailing Stop: 0.4094151271
+2024-12-14 02:50:17,233 - INFO - Precio actual: 0.4092300000, Trailing Stop: 0.4094151271
+2024-12-14 02:50:22,452 - INFO - Precio actual: 0.4092300000, Trailing Stop: 0.4094151271
+2024-12-14 02:50:27,998 - INFO - Precio actual: 0.4092200000, Trailing Stop: 0.4094151271
+2024-12-14 02:50:33,225 - INFO - Precio actual: 0.4092200000, Trailing Stop: 0.4094151271
+2024-12-14 02:50:38,446 - INFO - Precio actual: 0.4092200000, Trailing Stop: 0.4094151271
+2024-12-14 02:50:43,658 - INFO - Precio actual: 0.4092200000, Trailing Stop: 0.4094151271
+2024-12-14 02:50:48,879 - INFO - Precio actual: 0.4092200000, Trailing Stop: 0.4094151271
+2024-12-14 02:50:54,117 - INFO - Precio actual: 0.4092200000, Trailing Stop: 0.4094151271
+2024-12-14 02:50:59,344 - INFO - Precio actual: 0.4092200000, Trailing Stop: 0.4094151271
+2024-12-14 02:51:04,565 - INFO - Precio actual: 0.4092200000, Trailing Stop: 0.4094151271
+2024-12-14 02:51:09,784 - INFO - Precio actual: 0.4092200000, Trailing Stop: 0.4094151271
+2024-12-14 02:51:15,016 - INFO - Precio actual: 0.4092200000, Trailing Stop: 0.4094151271
+2024-12-14 02:51:20,582 - INFO - Precio actual: 0.4092200000, Trailing Stop: 0.4094151271
+2024-12-14 02:51:25,801 - INFO - Precio actual: 0.4092200000, Trailing Stop: 0.4094151271
+2024-12-14 02:51:31,036 - INFO - Precio actual: 0.4091000000, Trailing Stop: 0.4094151271
+2024-12-14 02:51:36,256 - INFO - Precio actual: 0.4091000000, Trailing Stop: 0.4094151271
+2024-12-14 02:51:41,474 - INFO - Precio actual: 0.4090200000, Trailing Stop: 0.4094151271
+2024-12-14 02:51:46,709 - INFO - Precio actual: 0.4090200000, Trailing Stop: 0.4094151271
+2024-12-14 02:51:51,928 - INFO - Precio actual: 0.4090200000, Trailing Stop: 0.4094151271
+2024-12-14 02:51:57,145 - INFO - Precio actual: 0.4090200000, Trailing Stop: 0.4094151271
+2024-12-14 02:52:02,365 - INFO - Precio actual: 0.4090800000, Trailing Stop: 0.4094151271
+2024-12-14 02:52:07,581 - INFO - Precio actual: 0.4091000000, Trailing Stop: 0.4094151271
+2024-12-14 02:52:13,145 - INFO - Precio actual: 0.4090800000, Trailing Stop: 0.4094151271
+2024-12-14 02:52:18,353 - INFO - Precio actual: 0.4108400000, Trailing Stop: 0.4094151271
+2024-12-14 02:52:18,353 - INFO - Vendiendo DOGEUSDT al precio 0.4108400000 para obtener ganancias.
+2024-12-14 02:52:19,853 - INFO - Resultado: PnL: 0.0721370556 USD, PnL Acumulado: 0.0721370556 USD
+2024-12-14 02:52:19,853 - INFO - Tiempo transcurrido: 0:07:25.988618
+2024-12-14 02:52:26,378 - INFO - Obteniendo datos históricos para DOGEUSDT...
+2024-12-14 02:52:28,372 - INFO - Preparando datos para DOGEUSDT...
+2024-12-14 02:52:28,372 - INFO - Dimensiones de X: (1877, 90, 9)
+2024-12-14 02:53:03,000 - INFO - Predicción del modelo: 0.6295464039, Precio actual: 0.4108400000
+2024-12-14 02:53:03,000 - INFO - Ejecutando orden BUY en DOGEUSDT...
+2024-12-14 02:53:03,000 - INFO - BUY 100 USDT de DOGEUSDT a 0.4108400000
+2024-12-14 02:53:05,076 - INFO - Precio actual: 0.4090000000, Trailing Stop: 0.4112758730
+2024-12-14 02:53:05,076 - INFO - Vendiendo DOGEUSDT al precio 0.4090000000 debido a Stop-Loss.
+2024-12-14 02:53:06,563 - INFO - Resultado: PnL: -0.1060931365 USD, PnL Acumulado: -0.0339560810 USD
+2024-12-14 02:53:06,563 - INFO - Tiempo transcurrido: 0:00:03.562669
+2024-12-14 02:53:13,083 - INFO - Obteniendo datos históricos para DOGEUSDT...
+2024-12-14 02:53:14,569 - INFO - Preparando datos para DOGEUSDT...
+2024-12-14 02:53:14,569 - INFO - Dimensiones de X: (1877, 90, 9)
+2024-12-14 02:53:44,245 - INFO - Predicción del modelo: 0.6350690126, Precio actual: 0.4090000000
+2024-12-14 02:53:44,245 - INFO - Ejecutando orden BUY en DOGEUSDT...
+2024-12-14 02:53:44,245 - INFO - BUY 100 USDT de DOGEUSDT a 0.4090000000
+2024-12-14 02:53:46,335 - INFO - Precio actual: 0.4091000000, Trailing Stop: 0.4094067290
+2024-12-14 02:53:51,889 - INFO - Precio actual: 0.4091000000, Trailing Stop: 0.4094067290
+2024-12-14 02:53:57,455 - INFO - Precio actual: 0.4091500000, Trailing Stop: 0.4094067290
+2024-12-14 02:54:03,010 - INFO - Precio actual: 0.4091400000, Trailing Stop: 0.4094067290
+2024-12-14 02:54:08,576 - INFO - Precio actual: 0.4091400000, Trailing Stop: 0.4094067290
+2024-12-14 02:54:13,800 - INFO - Precio actual: 0.4091400000, Trailing Stop: 0.4094067290
+2024-12-14 02:54:19,017 - INFO - Precio actual: 0.4094200000, Trailing Stop: 0.4094067290
+2024-12-14 02:54:19,017 - INFO - Vendiendo DOGEUSDT al precio 0.4094200000 para obtener ganancias.
+2024-12-14 02:54:20,677 - INFO - Resultado: PnL: 0.0994447554 USD, PnL Acumulado: 0.0654886744 USD
+2024-12-14 02:54:20,677 - INFO - Tiempo transcurrido: 0:00:36.432073
+2024-12-14 02:54:27,241 - INFO - Obteniendo datos históricos para DOGEUSDT...
+2024-12-14 02:54:28,908 - INFO - Preparando datos para DOGEUSDT...
+2024-12-14 02:54:28,923 - INFO - Dimensiones de X: (1877, 90, 9)
+2024-12-14 02:55:32,044 - INFO - Predicción del modelo: 0.6459764242, Precio actual: 0.4094200000
+2024-12-14 02:55:32,044 - INFO - Ejecutando orden BUY en DOGEUSDT...
+2024-12-14 02:55:32,044 - INFO - BUY 100 USDT de DOGEUSDT a 0.4094200000
+2024-12-14 02:55:34,112 - INFO - Precio actual: 0.4090800000, Trailing Stop: 0.4156878555
+2024-12-14 02:55:39,661 - INFO - Precio actual: 0.4090800000, Trailing Stop: 0.4156878555
+2024-12-14 02:55:45,202 - INFO - Precio actual: 0.4090800000, Trailing Stop: 0.4156878555
+2024-12-14 02:55:50,784 - INFO - Precio actual: 0.4090100000, Trailing Stop: 0.4156878555
+2024-12-14 02:55:56,007 - INFO - Precio actual: 0.4090100000, Trailing Stop: 0.4156878555
+2024-12-14 02:56:01,229 - INFO - Precio actual: 0.4090100000, Trailing Stop: 0.4156878555
+2024-12-14 02:56:06,475 - INFO - Precio actual: 0.4090800000, Trailing Stop: 0.4156878555
+2024-12-14 02:56:11,695 - INFO - Precio actual: 0.4090800000, Trailing Stop: 0.4156878555
+2024-12-14 02:56:16,912 - INFO - Precio actual: 0.4090800000, Trailing Stop: 0.4156878555
+2024-12-14 02:56:22,194 - INFO - Precio actual: 0.4090800000, Trailing Stop: 0.4156878555
+2024-12-14 02:56:27,414 - INFO - Precio actual: 0.4090800000, Trailing Stop: 0.4156878555
+2024-12-14 02:56:32,634 - INFO - Precio actual: 0.4090800000, Trailing Stop: 0.4156878555
+2024-12-14 02:56:38,179 - INFO - Precio actual: 0.4091200000, Trailing Stop: 0.4156878555
+2024-12-14 02:56:43,419 - INFO - Precio actual: 0.4091200000, Trailing Stop: 0.4156878555
+2024-12-14 02:56:48,652 - INFO - Precio actual: 0.4091200000, Trailing Stop: 0.4156878555
+2024-12-14 02:56:53,887 - INFO - Precio actual: 0.4091200000, Trailing Stop: 0.4156878555
+2024-12-14 02:56:59,450 - INFO - Precio actual: 0.4091200000, Trailing Stop: 0.4156878555
+2024-12-14 02:57:04,674 - INFO - Precio actual: 0.4091200000, Trailing Stop: 0.4156878555
+2024-12-14 02:57:09,891 - INFO - Precio actual: 0.4091200000, Trailing Stop: 0.4156878555
+2024-12-14 02:57:15,112 - INFO - Precio actual: 0.4091200000, Trailing Stop: 0.4156878555
+2024-12-14 02:57:20,346 - INFO - Precio actual: 0.4091200000, Trailing Stop: 0.4156878555
+2024-12-14 02:57:25,580 - INFO - Precio actual: 0.4091200000, Trailing Stop: 0.4156878555
+2024-12-14 02:57:31,128 - INFO - Precio actual: 0.4091200000, Trailing Stop: 0.4156878555
+2024-12-14 02:57:36,356 - INFO - Precio actual: 0.4090200000, Trailing Stop: 0.4156878555
+2024-12-14 02:57:41,584 - INFO - Precio actual: 0.4090200000, Trailing Stop: 0.4156878555
+2024-12-14 02:57:47,130 - INFO - Precio actual: 0.4090200000, Trailing Stop: 0.4156878555
+2024-12-14 02:57:52,352 - INFO - Precio actual: 0.4090100000, Trailing Stop: 0.4156878555
+2024-12-14 02:57:57,572 - INFO - Precio actual: 0.4090100000, Trailing Stop: 0.4156878555
+2024-12-14 02:58:02,790 - INFO - Precio actual: 0.4090100000, Trailing Stop: 0.4156878555
+2024-12-14 02:58:08,022 - INFO - Precio actual: 0.4090100000, Trailing Stop: 0.4156878555
+2024-12-14 02:58:13,554 - INFO - Precio actual: 0.4090100000, Trailing Stop: 0.4156878555
+2024-12-14 02:58:18,776 - INFO - Precio actual: 0.4090100000, Trailing Stop: 0.4156878555
+2024-12-14 02:58:24,340 - INFO - Precio actual: 0.4090200000, Trailing Stop: 0.4156878555
+2024-12-14 02:58:29,564 - INFO - Precio actual: 0.4090800000, Trailing Stop: 0.4156878555
+2024-12-14 02:58:35,125 - INFO - Precio actual: 0.4090800000, Trailing Stop: 0.4156878555
+2024-12-14 02:58:40,347 - INFO - Precio actual: 0.4090800000, Trailing Stop: 0.4156878555
+2024-12-14 02:58:45,599 - INFO - Precio actual: 0.4091200000, Trailing Stop: 0.4156878555
+2024-12-14 02:58:50,833 - INFO - Precio actual: 0.4090900000, Trailing Stop: 0.4156878555
+2024-12-14 02:58:56,059 - INFO - Precio actual: 0.4090200000, Trailing Stop: 0.4156878555
+2024-12-14 02:59:01,294 - INFO - Precio actual: 0.4090300000, Trailing Stop: 0.4156878555
+2024-12-14 02:59:06,839 - INFO - Precio actual: 0.4090300000, Trailing Stop: 0.4156878555
+2024-12-14 02:59:12,067 - INFO - Precio actual: 0.4090300000, Trailing Stop: 0.4156878555
+2024-12-14 02:59:17,297 - INFO - Precio actual: 0.4090000000, Trailing Stop: 0.4156878555
+2024-12-14 02:59:22,545 - INFO - Precio actual: 0.4090000000, Trailing Stop: 0.4156878555
+2024-12-14 02:59:28,094 - INFO - Precio actual: 0.4090000000, Trailing Stop: 0.4156878555
+2024-12-14 02:59:33,320 - INFO - Precio actual: 0.4090200000, Trailing Stop: 0.4156878555
+2024-12-14 02:59:38,540 - INFO - Precio actual: 0.4090200000, Trailing Stop: 0.4156878555
+2024-12-14 02:59:43,777 - INFO - Precio actual: 0.4090200000, Trailing Stop: 0.4156878555
+2024-12-14 02:59:49,057 - INFO - Precio actual: 0.4090000000, Trailing Stop: 0.4156878555
+2024-12-14 02:59:54,285 - INFO - Precio actual: 0.4090000000, Trailing Stop: 0.4156878555
+2024-12-14 02:59:55,337 - INFO - Tarea asíncrona cancelada. Cerrando...
+2024-12-14 03:00:06,622 - INFO - Inicializando cliente en Testnet...
+2024-12-14 03:00:07,843 - INFO - Obteniendo datos históricos para DOGEUSDT...
+2024-12-14 03:00:09,389 - INFO - Preparando datos para DOGEUSDT...
+2024-12-14 03:00:09,405 - INFO - Dimensiones de X: (1876, 90, 9)
+2024-12-14 03:00:32,976 - INFO - Predicción del modelo: 0.6289242506, Precio actual: 0.4090100000
+2024-12-14 03:00:32,976 - INFO - Ejecutando orden BUY en DOGEUSDT...
+2024-12-14 03:00:32,976 - INFO - BUY 100 USDT de DOGEUSDT a 0.4090100000
+2024-12-14 03:00:35,490 - INFO - Precio actual: 0.4090300000, Trailing Stop: 0.4133938185
+2024-12-14 03:00:41,024 - INFO - Precio actual: 0.4090500000, Trailing Stop: 0.4133938185
+2024-12-14 03:00:46,600 - INFO - Precio actual: 0.4091600000, Trailing Stop: 0.4133938185
+2024-12-14 03:00:52,149 - INFO - Precio actual: 0.4091700000, Trailing Stop: 0.4133938185
+2024-12-14 03:00:57,689 - INFO - Precio actual: 0.4092300000, Trailing Stop: 0.4133938185
+2024-12-14 03:01:02,918 - INFO - Precio actual: 0.4093100000, Trailing Stop: 0.4133938185
+2024-12-14 03:01:08,143 - INFO - Precio actual: 0.4093100000, Trailing Stop: 0.4133938185
+2024-12-14 03:01:13,371 - INFO - Precio actual: 0.4093100000, Trailing Stop: 0.4133938185
+2024-12-14 03:01:18,593 - INFO - Precio actual: 0.4094100000, Trailing Stop: 0.4133938185
+2024-12-14 03:01:23,811 - INFO - Precio actual: 0.4094600000, Trailing Stop: 0.4133938185
+2024-12-14 03:01:29,024 - INFO - Precio actual: 0.4094600000, Trailing Stop: 0.4133938185
+2024-12-14 03:01:34,248 - INFO - Precio actual: 0.4094600000, Trailing Stop: 0.4133938185
+2024-12-14 03:01:39,934 - INFO - Precio actual: 0.4094600000, Trailing Stop: 0.4133938185
+2024-12-14 03:01:45,164 - INFO - Precio actual: 0.4094600000, Trailing Stop: 0.4133938185
+2024-12-14 03:01:50,379 - INFO - Precio actual: 0.4094600000, Trailing Stop: 0.4133938185
+2024-12-14 03:01:55,599 - INFO - Precio actual: 0.4094600000, Trailing Stop: 0.4133938185
+2024-12-14 03:02:00,831 - INFO - Precio actual: 0.4094600000, Trailing Stop: 0.4133938185
+2024-12-14 03:02:06,052 - INFO - Precio actual: 0.4094600000, Trailing Stop: 0.4133938185
+2024-12-14 03:02:11,284 - INFO - Precio actual: 0.4094600000, Trailing Stop: 0.4133938185
+2024-12-14 03:02:16,510 - INFO - Precio actual: 0.4093600000, Trailing Stop: 0.4133938185
+2024-12-14 03:02:21,735 - INFO - Precio actual: 0.4094000000, Trailing Stop: 0.4133938185
+2024-12-14 03:02:26,969 - INFO - Precio actual: 0.4095000000, Trailing Stop: 0.4133938185
+2024-12-14 03:02:32,201 - INFO - Precio actual: 0.4095000000, Trailing Stop: 0.4133938185
+2024-12-14 03:02:37,429 - INFO - Precio actual: 0.4095000000, Trailing Stop: 0.4133938185
+2024-12-14 03:02:42,990 - INFO - Precio actual: 0.4094500000, Trailing Stop: 0.4133938185
+2024-12-14 03:02:48,214 - INFO - Precio actual: 0.4094500000, Trailing Stop: 0.4133938185
+2024-12-14 03:02:53,462 - INFO - Precio actual: 0.4094300000, Trailing Stop: 0.4133938185
+2024-12-14 03:02:58,690 - INFO - Precio actual: 0.4094100000, Trailing Stop: 0.4133938185
+2024-12-14 03:03:03,926 - INFO - Precio actual: 0.4094200000, Trailing Stop: 0.4133938185
+2024-12-14 03:03:09,150 - INFO - Precio actual: 0.4093600000, Trailing Stop: 0.4133938185
+2024-12-14 03:03:14,375 - INFO - Precio actual: 0.4093700000, Trailing Stop: 0.4133938185
+2024-12-14 03:03:19,586 - INFO - Precio actual: 0.4093000000, Trailing Stop: 0.4133938185
+2024-12-14 03:03:24,817 - INFO - Precio actual: 0.4093000000, Trailing Stop: 0.4133938185
+2024-12-14 03:03:30,044 - INFO - Precio actual: 0.4092800000, Trailing Stop: 0.4133938185
+2024-12-14 03:03:35,274 - INFO - Precio actual: 0.4092800000, Trailing Stop: 0.4133938185
+2024-12-14 03:03:40,487 - INFO - Precio actual: 0.4092300000, Trailing Stop: 0.4133938185
+2024-12-14 03:03:45,718 - INFO - Precio actual: 0.4092400000, Trailing Stop: 0.4133938185
+2024-12-14 03:03:50,936 - INFO - Precio actual: 0.4092500000, Trailing Stop: 0.4133938185
+2024-12-14 03:03:56,164 - INFO - Precio actual: 0.4092500000, Trailing Stop: 0.4133938185
+2024-12-14 03:04:01,383 - INFO - Precio actual: 0.4091800000, Trailing Stop: 0.4133938185
+2024-12-14 03:04:06,603 - INFO - Precio actual: 0.4092200000, Trailing Stop: 0.4133938185
+2024-12-14 03:04:11,827 - INFO - Precio actual: 0.4092200000, Trailing Stop: 0.4133938185
+2024-12-14 03:04:17,050 - INFO - Precio actual: 0.4092200000, Trailing Stop: 0.4133938185
+2024-12-14 03:04:22,276 - INFO - Precio actual: 0.4092200000, Trailing Stop: 0.4133938185
+2024-12-14 03:04:27,502 - INFO - Precio actual: 0.4091900000, Trailing Stop: 0.4133938185
+2024-12-14 03:04:32,726 - INFO - Precio actual: 0.4092000000, Trailing Stop: 0.4133938185
+2024-12-14 03:04:37,944 - INFO - Precio actual: 0.4091900000, Trailing Stop: 0.4133938185
+2024-12-14 03:04:43,162 - INFO - Precio actual: 0.4091900000, Trailing Stop: 0.4133938185
+2024-12-14 03:04:48,385 - INFO - Precio actual: 0.4091900000, Trailing Stop: 0.4133938185
+2024-12-14 03:04:53,619 - INFO - Precio actual: 0.4092200000, Trailing Stop: 0.4133938185
+2024-12-14 03:04:58,852 - INFO - Precio actual: 0.4091800000, Trailing Stop: 0.4133938185
+2024-12-14 03:05:04,074 - INFO - Precio actual: 0.4091800000, Trailing Stop: 0.4133938185
+2024-12-14 03:05:09,304 - INFO - Precio actual: 0.4091900000, Trailing Stop: 0.4133938185
+2024-12-14 03:05:14,531 - INFO - Precio actual: 0.4092700000, Trailing Stop: 0.4133938185
+2024-12-14 03:05:19,744 - INFO - Precio actual: 0.4093500000, Trailing Stop: 0.4133938185
+2024-12-14 03:05:24,979 - INFO - Precio actual: 0.4093400000, Trailing Stop: 0.4133938185
+2024-12-14 03:05:30,541 - INFO - Precio actual: 0.4093300000, Trailing Stop: 0.4133938185
+2024-12-14 03:05:35,763 - INFO - Precio actual: 0.4093200000, Trailing Stop: 0.4133938185
+2024-12-14 03:05:40,999 - INFO - Precio actual: 0.4093200000, Trailing Stop: 0.4133938185
+2024-12-14 03:05:46,230 - INFO - Precio actual: 0.4093300000, Trailing Stop: 0.4133938185
+2024-12-14 03:05:51,443 - INFO - Precio actual: 0.4093600000, Trailing Stop: 0.4133938185
+2024-12-14 03:05:56,673 - INFO - Precio actual: 0.4094000000, Trailing Stop: 0.4133938185
+2024-12-14 03:06:01,878 - INFO - Precio actual: 0.4097900000, Trailing Stop: 0.4133938185
+2024-12-14 03:06:07,096 - INFO - Precio actual: 0.4097900000, Trailing Stop: 0.4133938185
+2024-12-14 03:06:12,642 - INFO - Precio actual: 0.4097900000, Trailing Stop: 0.4133938185
+2024-12-14 03:06:17,878 - INFO - Precio actual: 0.4097900000, Trailing Stop: 0.4133938185
+2024-12-14 03:06:23,097 - INFO - Precio actual: 0.4097900000, Trailing Stop: 0.4133938185
+2024-12-14 03:06:28,317 - INFO - Precio actual: 0.4103800000, Trailing Stop: 0.4133938185
+2024-12-14 03:06:33,540 - INFO - Precio actual: 0.4103800000, Trailing Stop: 0.4133938185
+2024-12-14 03:06:38,766 - INFO - Precio actual: 0.4103800000, Trailing Stop: 0.4133938185
+2024-12-14 03:06:44,002 - INFO - Precio actual: 0.4103800000, Trailing Stop: 0.4133938185
+2024-12-14 03:06:49,563 - INFO - Precio actual: 0.4103800000, Trailing Stop: 0.4133938185
+2024-12-14 03:06:55,115 - INFO - Precio actual: 0.4103800000, Trailing Stop: 0.4133938185
+2024-12-14 03:07:00,340 - INFO - Precio actual: 0.4103800000, Trailing Stop: 0.4133938185
+2024-12-14 03:07:05,890 - INFO - Precio actual: 0.4102700000, Trailing Stop: 0.4133938185
+2024-12-14 03:07:11,114 - INFO - Precio actual: 0.4102500000, Trailing Stop: 0.4133938185
+2024-12-14 03:07:16,339 - INFO - Precio actual: 0.4102700000, Trailing Stop: 0.4133938185
+2024-12-14 03:07:21,901 - INFO - Precio actual: 0.4102700000, Trailing Stop: 0.4133938185
+2024-12-14 03:07:27,121 - INFO - Precio actual: 0.4104100000, Trailing Stop: 0.4133938185
+2024-12-14 03:07:32,349 - INFO - Precio actual: 0.4104100000, Trailing Stop: 0.4133938185
+2024-12-14 03:07:37,573 - INFO - Precio actual: 0.4104100000, Trailing Stop: 0.4133938185
+2024-12-14 03:07:42,800 - INFO - Precio actual: 0.4104100000, Trailing Stop: 0.4133938185
+2024-12-14 03:07:48,029 - INFO - Precio actual: 0.4104100000, Trailing Stop: 0.4133938185
+2024-12-14 03:07:53,583 - INFO - Precio actual: 0.4104100000, Trailing Stop: 0.4133938185
+2024-12-14 03:07:58,813 - INFO - Cerrando operación al precio actual 0.4104100000 (más cercano al Take-Profit).
+2024-12-14 03:08:00,590 - INFO - Resultado: PnL: 0.3422899196 USD, PnL Acumulado: 0.3422899196 USD
+2024-12-14 03:08:00,590 - INFO - Tiempo transcurrido: 0:07:27.613462
+2024-12-14 03:08:07,287 - INFO - Obteniendo datos históricos para PEPEUSDT...
+2024-12-14 03:08:09,136 - INFO - Preparando datos para PEPEUSDT...
+2024-12-14 03:08:09,149 - INFO - Dimensiones de X: (1876, 90, 9)
+2024-12-14 03:09:04,648 - INFO - Tarea asíncrona cancelada. Cerrando...
