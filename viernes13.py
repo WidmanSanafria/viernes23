@@ -31,7 +31,7 @@ BATCH_SIZE = 16  # Tamaño del batch de entrenamiento
 MODEL_SAVE_PATH = "lstm_model.keras"  # Ruta para guardar/cargar el modelo
 PNL_CSV_PATH = "trading_pnl.csv"  # Archivo para registrar resultados
 MAX_CONSECUTIVE_LOSSES = 2  # Máximo de pérdidas consecutivas antes de cambiar de par
-pairs = ["DOGEUSDT", "PEPEUSDT", "FIROUSDT"]  # Lista de pares a operar
+pairs = ["DOGEUSDT", "PEPEUSDT", "WBETHUSDT", "WBTCUSDT", "SOLUSDT" ]  # Lista de pares a operar
 
 # Umbral de predicción para abortar la operación
 PREDICTION_THRESHOLD = 0.01  # Si la predicción es menor que este valor, abortar la operación
