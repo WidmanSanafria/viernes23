@@ -24,14 +24,17 @@ INTERVAL = Client.KLINE_INTERVAL_1MINUTE  # Intervalo de las velas
 LOOKBACK = "2000 minutes ago UTC"  # Cantidad de datos históricos
 ATR_MULTIPLIER = 1.5  # Multiplicador para Stop-Loss y Take-Profit
 TRADE_AMOUNT_USDT = 5  # Monto fijo por operación
-SLEEP_INTERVAL = 5  # Tiempo de espera entre ejecuciones
-WINDOW_SIZE = 80  # Tamaño de ventana para el modelo LSTM
+SLEEP_INTERVAL = 60  # Tiempo de espera entre ejecuciones
+WINDOW_SIZE = 60  # Tamaño de ventana para el modelo LSTM
 EPOCHS = 20  # Número de épocas de entrenamiento
 BATCH_SIZE = 16  # Tamaño del batch de entrenamiento
 MODEL_SAVE_PATH = "lstm_model.keras"  # Ruta para guardar/cargar el modelo
 PNL_CSV_PATH = "trading_pnl.csv"  # Archivo para registrar resultados
 MAX_CONSECUTIVE_LOSSES = 2  # Máximo de pérdidas consecutivas antes de cambiar de par
 pairs = ["DOGEUSDT", "PEPEUSDT", "FIROUSDT"]  # Lista de pares a operar
+
+# Umbral de predicción para abortar la operación
+PREDICTION_THRESHOLD = 0.01  # Si la predicción es menor que este valor, abortar la operación
 
 # Variables de control
 profit_loss_accumulated = 0
@@ -150,7 +153,6 @@ async def execute_order(symbol, side, entry_price, stop_loss, take_profit):
     global consecutive_losses, profit_loss_accumulated
     start_time = datetime.now()  # Tiempo de inicio de la operación
     logger.info(f"{side} {TRADE_AMOUNT_USDT} USDT de {symbol} a {entry_price:.10f}")
-    logger.info(f"Stop-Loss: {stop_loss:.10f}, Take-Profit: {take_profit:.10f}")
     await send_telegram_message(f"🔵 {side} {TRADE_AMOUNT_USDT} USDT de {symbol} a {entry_price:.10f}\n"
                                 f"🟠 Stop-Loss: {stop_loss:.10f}, 🟠 Take-Profit: {take_profit:.10f}")
 
@@ -212,10 +214,14 @@ async def main():
     try:
         while True:
             symbol = pairs[current_pair_index]
+            logger.info(f"Obteniendo datos históricos para {symbol}...")
             df = await get_historical_data(symbol)
             if df is None or len(df) < WINDOW_SIZE:
+                logger.warning(f"No se pudieron obtener datos para {symbol}. Saltando...")
+                await asyncio.sleep(SLEEP_INTERVAL)
                 continue
 
+            logger.info(f"Preparando datos para {symbol}...")
             X, y, _ = prepare_lstm_data(df, WINDOW_SIZE)
             logger.info(f"Dimensiones de X: {X.shape}")
             model = build_lstm_model((X.shape[1], X.shape[2])) if not os.path.exists(MODEL_SAVE_PATH) else load_model(MODEL_SAVE_PATH)
@@ -226,6 +232,14 @@ async def main():
             prediction = model.predict(X[-1].reshape(1, X.shape[1], X.shape[2]))[0][0]
             current_price = df['close'].iloc[-1]
             logger.info(f"Predicción del modelo: {prediction:.10f}, Precio actual: {current_price:.10f}")
+
+            # Verificar si la predicción es demasiado baja para abortar la operación
+            if prediction < PREDICTION_THRESHOLD:
+                logger.info(f"Predicción demasiado baja ({prediction:.10f}). Abortando operación.")
+                await send_telegram_message(f"🔴 Predicción demasiado baja ({prediction:.10f}). Abortando operación.")
+                await asyncio.sleep(SLEEP_INTERVAL)
+                continue
+
             atr = df['atr'].iloc[-1]
             stop_loss = current_price - ATR_MULTIPLIER * atr if prediction > current_price else current_price + ATR_MULTIPLIER * atr
             take_profit = current_price + ATR_MULTIPLIER * atr if prediction > current_price else current_price - ATR_MULTIPLIER * atr
@@ -239,10 +253,12 @@ async def main():
                 await asyncio.sleep(SLEEP_INTERVAL)
                 continue
 
+            logger.info(f"Ejecutando orden {side} en {symbol}...")
             await execute_order(symbol, side, current_price, stop_loss, take_profit)
 
             if consecutive_losses >= MAX_CONSECUTIVE_LOSSES:
                 current_pair_index = (current_pair_index + 1) % len(pairs)
+                logger.info(f"Cambiando de par a {pairs[current_pair_index]} después de {MAX_CONSECUTIVE_LOSSES} pérdidas consecutivas.")
             await asyncio.sleep(SLEEP_INTERVAL)
     except asyncio.CancelledError:
         logger.info("Tarea asíncrona cancelada. Cerrando...")
