@@ -9,7 +9,7 @@ from tensorflow.keras.models import Sequential, load_model
 from tensorflow.keras.layers import LSTM, Dense, Dropout
 from tensorflow.keras.callbacks import EarlyStopping
 from sklearn.preprocessing import MinMaxScaler
-from datetime import datetime
+from datetime import datetime, timedelta
 import os
 import csv
 from tqdm import tqdm
@@ -22,24 +22,31 @@ from telegram import Bot
 IS_TESTNET = True  # Modo Testnet o Producción
 INTERVAL = Client.KLINE_INTERVAL_1MINUTE  # Intervalo de las velas
 LOOKBACK = "2000 minutes ago UTC"  # Cantidad de datos históricos
-ATR_MULTIPLIER = 1.5  # Multiplicador para Stop-Loss y Take-Profit
-TRADE_AMOUNT_USDT = 100  # Monto fijo por operación
-SLEEP_INTERVAL = 5  # Tiempo de espera entre ejecuciones
-WINDOW_SIZE = 90  # Tamaño de ventana para el modelo LSTM
+ATR_MULTIPLIER = 1.0  # Multiplicador para Stop-Loss y Take-Profit
+TRADE_AMOUNT_USDT = 5  # Monto fijo por operación
+SLEEP_INTERVAL = 1  # Tiempo de espera entre ejecuciones
+WINDOW_SIZE = 80  # Tamaño de ventana para el modelo LSTM
 EPOCHS = 20  # Número de épocas de entrenamiento
 BATCH_SIZE = 16  # Tamaño del batch de entrenamiento
 MODEL_SAVE_PATH = "lstm_model.keras"  # Ruta para guardar/cargar el modelo
 PNL_CSV_PATH = "trading_pnl.csv"  # Archivo para registrar resultados
 MAX_CONSECUTIVE_LOSSES = 2  # Máximo de pérdidas consecutivas antes de cambiar de par
-pairs = ["DOGEUSDT", "PEPEUSDT", "WBETHUSDT", "WBTCUSDT", "SOLUSDT" ]  # Lista de pares a operar
+MAX_CONSECUTIVE_WINS = 4  # Máximo de ganancias consecutivas para seguir en el mismo par
+pairs = ["DOGEUSDT", "PEPEUSDT", "OMUSDT", "WBTCUSDT", "SOLUSDT", "FUNUSDT","HARDUSDT","QKCUSDT", "ELFUSDT", "DCRUSDT", "HBARUSDT", "GNSUSDT", "BIFIUSDT", "ARDRUSDT", "RONINUSDT", "PROMUSDT", "CLVUSDT", "POLUSDT"]  # Lista de pares a operar]  # Lista de pares a operar
 
 # Umbral de predicción para abortar la operación
-PREDICTION_THRESHOLD = 0.01  # Si la predicción es menor que este valor, abortar la operación
+PREDICTION_THRESHOLD = 0.1  # Si la predicción es menor que este valor, abortar la operación
+
+# Tiempo máximo de espera si no hay señales de compra
+MAX_WAIT_TIME_MINUTES = 5  # Esperar 5 minutos si no hay señales de compra
 
 # Variables de control
 profit_loss_accumulated = 0
 consecutive_losses = 0
+consecutive_wins = 0
 current_pair_index = 0
+current_pair = None
+last_signal_time = datetime.now()
 
 # Configuración de Telegram
 TELEGRAM_BOT_TOKEN = "8015944139:AAHF2F-aBugfnXaVMBLbLPQURWaHUpn-koc"  # Reemplaza con tu token
@@ -118,9 +125,9 @@ def prepare_lstm_data(df, window_size):
 def build_lstm_model(input_shape):
     """Construye el modelo LSTM con mayor precisión."""
     model = Sequential([
-        LSTM(100, return_sequences=True, input_shape=input_shape),  # Primera capa LSTM con 100 neuronas
+        LSTM(60, return_sequences=True, input_shape=input_shape),  # Primera capa LSTM con 60 neuronas
         Dropout(0.2),  # Dropout para evitar overfitting
-        LSTM(100, return_sequences=False),  # Segunda capa LSTM con 100 neuronas
+        LSTM(60, return_sequences=False),  # Segunda capa LSTM con 60 neuronas
         Dropout(0.2),  # Dropout para evitar overfitting
         Dense(25, activation='relu'),  # Capa densa con 25 neuronas
         Dense(1)  # Capa de salida
@@ -150,7 +157,7 @@ async def check_balance(symbol):
 
 async def execute_order(symbol, side, entry_price, stop_loss, take_profit):
     """Simula la ejecución de una orden y monitoriza su resultado."""
-    global consecutive_losses, profit_loss_accumulated
+    global consecutive_losses, consecutive_wins, profit_loss_accumulated
     start_time = datetime.now()  # Tiempo de inicio de la operación
     logger.info(f"{side} {TRADE_AMOUNT_USDT} USDT de {symbol} a {entry_price:.10f}")
     await send_telegram_message(f"🔵 {side} {TRADE_AMOUNT_USDT} USDT de {symbol} a {entry_price:.10f}\n"
@@ -207,7 +214,12 @@ async def execute_order(symbol, side, entry_price, stop_loss, take_profit):
     end_time = datetime.now()  # Tiempo de finalización de la operación
     elapsed_time = end_time - start_time  # Tiempo transcurrido
     profit_loss_accumulated += pnl
-    consecutive_losses = consecutive_losses + 1 if pnl < 0 else 0
+    if pnl > 0:
+        consecutive_wins += 1
+        consecutive_losses = 0
+    else:
+        consecutive_wins = 0
+        consecutive_losses += 1
     logger.info(f"Resultado: PnL: {pnl:.10f} USD, PnL Acumulado: {profit_loss_accumulated:.10f} USD")
     logger.info(f"Tiempo transcurrido: {elapsed_time}")
     await send_telegram_message(f"Resultado: PnL: {pnl:.10f} USD, PnL Acumulado: {profit_loss_accumulated:.10f} USD\n"
@@ -217,7 +229,7 @@ async def execute_order(symbol, side, entry_price, stop_loss, take_profit):
 # FUNCIÓN PRINCIPAL
 # ====================
 async def main():
-    global current_pair_index, consecutive_losses
+    global current_pair_index, consecutive_losses, consecutive_wins, current_pair, last_signal_time
     try:
         while True:
             # Verificar si se han recorrido todos los pares
@@ -228,14 +240,21 @@ async def main():
                 await asyncio.sleep(SLEEP_INTERVAL * 6)  # Esperar un tiempo antes de volver a verificar
                 continue
 
-            symbol = pairs[current_pair_index]
-            logger.info(f"Obteniendo datos históricos para {symbol}...")
-            df = await get_historical_data(symbol)
-            if df is None or len(df) < WINDOW_SIZE:
-                logger.warning(f"No se pudieron obtener datos para {symbol}. Saltando...")
-                current_pair_index += 1  # Pasar al siguiente par
-                await asyncio.sleep(SLEEP_INTERVAL)
-                continue
+            # Si hay más de 4 ganancias consecutivas, seguir con el mismo par
+            if consecutive_wins >= MAX_CONSECUTIVE_WINS:
+                logger.info(f"Más de {MAX_CONSECUTIVE_WINS} ganancias consecutivas. Seguimos con el par {current_pair}.")
+                await send_telegram_message(f"🟢 Más de {MAX_CONSECUTIVE_WINS} ganancias consecutivas. Seguimos con el par {current_pair}.")
+                symbol = current_pair
+            else:
+                symbol = pairs[current_pair_index]
+                current_pair = symbol
+                logger.info(f"Obteniendo datos históricos para {symbol}...")
+                df = await get_historical_data(symbol)
+                if df is None or len(df) < WINDOW_SIZE:
+                    logger.warning(f"No se pudieron obtener datos para {symbol}. Saltando...")
+                    current_pair_index += 1  # Pasar al siguiente par
+                    await asyncio.sleep(SLEEP_INTERVAL)
+                    continue
 
             logger.info(f"Preparando datos para {symbol}...")
             X, y, _ = prepare_lstm_data(df, WINDOW_SIZE)
@@ -251,10 +270,12 @@ async def main():
 
             # Verificar si la predicción es demasiado baja para abortar la operación
             if prediction < PREDICTION_THRESHOLD:
-                logger.info(f"Predicción demasiado baja ({prediction:.10f}). Abortando operación.")
-                await send_telegram_message(f"🔴 Predicción demasiado baja ({prediction:.10f}). Abortando operación.")
+                logger.info(f"Predicción demasiado baja ({prediction:.10f}). Esperando 5 minutos antes de cambiar de par.")
+                await send_telegram_message(f"🔴 Predicción demasiado baja ({prediction:.10f}). Esperando 5 minutos antes de cambiar de par.")
+                # Mostrar barra de carga durante la espera
+                for _ in tqdm(range(MAX_WAIT_TIME_MINUTES * 60 // SLEEP_INTERVAL), desc="Esperando señales", ncols=80):
+                    await asyncio.sleep(SLEEP_INTERVAL)
                 current_pair_index += 1  # Pasar al siguiente par
-                await asyncio.sleep(SLEEP_INTERVAL)
                 continue
 
             atr = df['atr'].iloc[-1]
@@ -267,8 +288,9 @@ async def main():
             if side == "SELL" and not await check_balance(symbol):
                 logger.info(f"No hay saldo disponible para {symbol}. Esperando orden de compra...")
                 await send_telegram_message(f"🔴 No hay saldo disponible para {symbol}. Esperando orden de compra...")
-                current_pair_index += 1  # Pasar al siguiente par
-                await asyncio.sleep(SLEEP_INTERVAL)
+                # Mostrar barra de carga durante la espera
+                for _ in tqdm(range(MAX_WAIT_TIME_MINUTES * 60 // SLEEP_INTERVAL), desc="Esperando saldo", ncols=80):
+                    await asyncio.sleep(SLEEP_INTERVAL)
                 continue
 
             logger.info(f"Ejecutando orden {side} en {symbol}...")
@@ -277,7 +299,9 @@ async def main():
             if consecutive_losses >= MAX_CONSECUTIVE_LOSSES:
                 current_pair_index = (current_pair_index + 1) % len(pairs)
                 logger.info(f"Cambiando de par a {pairs[current_pair_index]} después de {MAX_CONSECUTIVE_LOSSES} pérdidas consecutivas.")
-            else:
+                await send_telegram_message(f"🔴 Cambiando de par a {pairs[current_pair_index]} después de {MAX_CONSECUTIVE_LOSSES} pérdidas consecutivas.")
+                consecutive_losses = 0  # Reiniciar contador de pérdidas
+            elif consecutive_wins < MAX_CONSECUTIVE_WINS:
                 current_pair_index += 1  # Pasar al siguiente par
             await asyncio.sleep(SLEEP_INTERVAL)
     except asyncio.CancelledError:
